@@ -13,7 +13,6 @@ public class Main {
         long endTime2 = System.currentTimeMillis();
         System.out.println("Execution time for Concatenation: " + (endTime2 - startTime2) + " ms.");
 
-
     }
 
     public static String buildStringWithStringBuilder (int N) {
