@@ -32,5 +32,4 @@ public class Main {
     public static String[] splitTextIntoWords(String text) {
         return text.split("\\W+");
     }
-
 }
