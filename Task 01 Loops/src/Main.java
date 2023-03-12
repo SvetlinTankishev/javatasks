@@ -40,5 +40,6 @@ public class Main {
             i++;
         } while (i < 100);
         System.out.println();
+
     }
 }
