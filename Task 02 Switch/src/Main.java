@@ -18,7 +18,6 @@ public class Main {
             case 6: return "Saturday";
             case 7: return "Sunday";
             default: return "Week contains only 7 days";
-
         }
     }
 }
