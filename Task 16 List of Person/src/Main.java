@@ -15,11 +15,11 @@ class Person implements Comparable<Person> {
 
     @Override
     public String toString() {
-        return "Person- " +
+        return "Person-[" +
                 "First Name: '" + firstName + '\'' +
                 ", Last Name: '" + lastName + '\'' +
                 ", Address: '" + address + '\'' +
-                ", Age: " + age;
+                ", Age: " + age + "]";
     }
 
     public String getFirstName() {
