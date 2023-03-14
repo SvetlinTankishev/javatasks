@@ -56,12 +56,12 @@ class Person implements Comparable<Person> {
 public class Main {
 
     public static void main(String[] args) {
-        hashSet();
-        arrayList();
-        equalityCompareTo();
+        hashSetMethod();
+        arrayListMethod();
+        equalityCompareToMethod();
     }
 
-    public static void hashSet() {
+    public static void hashSetMethod() {
         HashSet<Person> hashSet = new HashSet<>();
         hashSet.add(new Person("John", "Doe", "Tzarigradsko Shose 123", 30));
         hashSet.add(new Person("Jane", "Doe", "Tzarigradsko Shose 321", 25));
@@ -71,7 +71,7 @@ public class Main {
         System.out.println("HashSet: " + hashSet);
     }
 
-    public static void arrayList() {
+    public static void arrayListMethod() {
         ArrayList<Person> arrayList = new ArrayList<>();
         arrayList.add(new Person("John", "Doe", "Tzarigradsko Shose 123", 30));
         arrayList.add(new Person("Jane", "Doe", "Tzarigradsko Shose 321", 25));
@@ -81,7 +81,7 @@ public class Main {
         System.out.println("ArrayList contains Alice Smith: " + arrayList.contains(new Person("Alice", "Smith", "Gorublyane 4321", 20)));
     }
 
-    public static void equalityCompareTo() {
+    public static void equalityCompareToMethod() {
         Person person1 = new Person("John", "Doe", "Tzarigradsko Shose 123", 30);
         Person person2 = new Person("Jane", "Does", "Tzarigradsko Shose 321", 30);
         Person person3 = new Person("Johnson", "Doesnt", "Kokiche 14", 25);
