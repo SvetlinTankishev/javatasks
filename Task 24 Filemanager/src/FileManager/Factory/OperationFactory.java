@@ -14,12 +14,11 @@ public class OperationFactory {
     public static final int CREATE_DIRECTORY = 3;
 
     public static AbstractOperation createOperation(int operationType) throws OperationsException {
-        switch (operationType) {
-            case CREATE_EMPTY_FILE: return new CreateEmptyFileOperation();
-            case DELETE_FILE: return new DeleteFileOperation();
-            case CREATE_DIRECTORY: return new CreateDirectoryOperation();
-            default:
-                throw new OperationsException("Invalid operation type");
-        }
+        return switch (operationType) {
+            case CREATE_EMPTY_FILE -> new CreateEmptyFileOperation();
+            case DELETE_FILE -> new DeleteFileOperation();
+            case CREATE_DIRECTORY -> new CreateDirectoryOperation();
+            default -> throw new OperationsException("Invalid operation type");
+        };
     }
 }
