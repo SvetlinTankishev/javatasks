@@ -41,33 +41,37 @@ public class ShoppingCart {
             Product p = entry.getKey();
             int amount = entry.getValue();
             double price = p.getPrice();
+            totalPrice += price * amount;
+            }
+        return totalPrice;
+        }
+
+
+    public double getDiscount() {
+        double discountedPrice = 0;
+
+        for (Map.Entry<Product, Integer> entry : cart.entrySet()) {
+            Product p = entry.getKey();
+            int amount = entry.getValue();
+            double price = p.getPrice();
 
             if (amount > 10) {
                 double discount = 0.1;
-                double originalPrice = price * amount;
-                double discountedPrice = originalPrice - (originalPrice * discount);
-                totalPrice += discountedPrice;
-            } else {
-                totalPrice += price * amount;
+                double originalProductPrice = price * amount;
+                double discountedProductPrice = originalProductPrice - (originalProductPrice * discount);
+                discountedPrice += originalProductPrice - discountedProductPrice;
             }
         }
 
-        if (totalPrice > 1000) {
+        double originalPrice = calculateTotalPrice();
+
+        if (originalPrice > 1000) {
             double discount = 0.05;
-            double originalPrice = totalPrice;
-            totalPrice = originalPrice - (originalPrice * discount);
+            double originalCartPrice = originalPrice;
+            originalPrice = originalCartPrice - (originalCartPrice * discount);
+            discountedPrice += originalCartPrice - originalPrice;
         }
-        return totalPrice;
-    }
 
-    public double getDiscount() {
-        double totalPrice = calculateTotalPrice();
-        double discount = 0;
-
-
-            if (totalPrice > 1000) {
-                discount += totalPrice * 0.05;
-            }
-            return discount;
+        return discountedPrice;
     }
 }
