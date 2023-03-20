@@ -11,6 +11,6 @@ class SubClass1 extends AbstractClass {
         System.out.println("Constructor in SubClass1 executed.");
     }
 }
-//2. The static block in SubClass1 is executed because it is loaded when the SubClass1 is loaded
-//5. An instance of SubClass1 is created in the main method, which triggers the instance initialization block in SubClass1 to be executed
-//6. Constructor in SubClass1 is executed due to the inheritance
+//2. The static block in SubClass1 is executed because it is loaded when the SubClass1 is loaded.
+//5. An instance of SubClass1 is created in the main method, which triggers the instance initialization block in SubClass1 to be executed.
+//6. Constructor in SubClass1 is executed due to the inheritance.

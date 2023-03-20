@@ -7,6 +7,7 @@ public class Main {
     }
 }
 
+
 //1. Static block in the Abstract Class is executed first because it is loaded when the program starts.
 //2. The static block in SubClass1 is executed because it is loaded when the SubClass1 is loaded.
 //3. An instance of the AbstractClass is executed since it runs every time an object of the class is created,
