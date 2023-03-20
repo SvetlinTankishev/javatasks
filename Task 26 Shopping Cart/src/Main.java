@@ -6,7 +6,7 @@ public class Main {
         Product product4 = new Product("Pants", 750);
 
         ShoppingCart cart = new ShoppingCart();
-        cart.addProduct(product1, 12);
+        cart.addProduct(product1, 11);
         cart.addProduct(product2, 12);
         cart.addProduct(product3, 12);
         cart.addProduct(product4, 14);
