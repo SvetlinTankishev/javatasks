@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Student>
+	<name>John Doe</name>
+	<id>123456</id>
+	<address>123 Main St</address>
+</Student>
