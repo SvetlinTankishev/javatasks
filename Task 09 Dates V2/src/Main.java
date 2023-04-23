@@ -9,8 +9,8 @@ public class Main {
         long days2 = 0;
 
         try {
-            days1 = DateCalculatorUsingSimpleDateFormat.calculateDaysBetween(date1, date2);
-            days2 = DateCalculatorUsingLocalDate.calculateDaysBetween(date1, date2);
+            days1 = DateCalculatorUsingSimpleDateFormat.calculateDaysBetween(date1, date2); //tl;dr: old bad
+            days2 = DateCalculatorUsingLocalDate.calculateDaysBetween(date1, date2); //tl;dr: new good
         } catch (ParseException e) {
             e.printStackTrace();
         }
