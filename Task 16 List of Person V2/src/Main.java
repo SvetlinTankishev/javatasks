@@ -18,7 +18,7 @@ public class Main {
         System.out.println("Sorted by age:");
         System.out.println(people);
 
-        people.sort(Comparator.comparing(Person::getAddress));
+        people.sort(Comparator.comparing(Person::address));
         System.out.println("Sorted by address:");
         System.out.println(people);
     }
