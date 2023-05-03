@@ -1,10 +1,10 @@
 package Company.Departments.Employees;
 
 public class Employee {
-    private String name;
-    private String email;
-    private int vacationDays;
-    private double salary;
+    private final String name;
+    private final String email;
+    private final int vacationDays;
+    private final double salary;
 
     public Employee(String name, String email, int vacationDays, double salary) {
         this.name = name;
@@ -21,15 +21,15 @@ public class Employee {
         return email;
     }
 
-    public int getVacationDays() {
+    public int getEmployeeVacationDays() {
         return vacationDays;
     }
 
-    public double getSalary() {
+    public double getEmployeeSalary() {
         return salary;
     }
 
-    public double getTaxes() {
+    public double getEmployeeTaxes() {
         return 0.0;
     }
 }

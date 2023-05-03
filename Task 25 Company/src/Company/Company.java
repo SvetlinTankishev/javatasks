@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Company {
 
-    private List<Department> departments = new ArrayList<>();
+    private final List<Department> departments = new ArrayList<>();
 
     public void addDepartment(Department department) {
         departments.add(department);
@@ -27,7 +27,7 @@ public class Company {
     public int getVacationDaysByDepartmentName(String departmentName) {
         for (Department department : departments) {
             if (department.getName().equals(departmentName)) {
-                return department.getVacationDays();
+                return department.getDepartmentVacationDays();
             }
         }
         return 0;
@@ -36,16 +36,16 @@ public class Company {
     public double getTaxesByDepartmentName(String departmentName) {
         for (Department department : departments) {
             if (department.getName().equals(departmentName)) {
-                return department.getTaxes();
+                return department.getDepartmentTaxes();
             }
         }
         return 0;
     }
 
-    public double getTaxes() {
+    public double getCompanyTaxes() {
         double taxes = 0;
         for (Department department : departments) {
-            taxes += department.getTaxes();
+            taxes += department.getDepartmentTaxes();
         }
         return taxes;
     }

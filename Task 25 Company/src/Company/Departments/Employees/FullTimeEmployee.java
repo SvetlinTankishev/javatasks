@@ -1,15 +1,15 @@
 package Company.Departments.Employees;
 
 public class FullTimeEmployee extends Employee {
-
-    private static final int VACATION_DAYS = 30;
-    private static final double TAX_RATE = 0.2;
+    protected static final int VACATION_DAYS = 30;
+    protected static final double TAX_RATE = 0.2;
 
     public FullTimeEmployee(String name, String email, double salary) {
         super(name, email, VACATION_DAYS, salary);
     }
 
-    public double getTaxes() {
-        return getSalary() * TAX_RATE;
+    @Override
+    public double getEmployeeTaxes() {
+        return getEmployeeSalary() * TAX_RATE;
     }
 }

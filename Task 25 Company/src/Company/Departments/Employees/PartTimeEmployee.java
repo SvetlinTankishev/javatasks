@@ -8,7 +8,8 @@ public class PartTimeEmployee extends Employee {
         super(name, email, VACATION_DAYS, salary);
     }
 
-    public double getTaxes() {
-        return getSalary() * TAX_RATE;
+    @Override
+    public double getEmployeeTaxes() {
+        return getEmployeeSalary() * TAX_RATE;
     }
 }

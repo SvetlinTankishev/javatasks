@@ -10,7 +10,7 @@ public class Main {
 
         Company company = new Company();
 
-        Manager financeManager = new Manager("Jolly Kane", "jolly.kane@sap.com", 130000);
+        Manager financeManager = new Manager("Jolly Kane", "jolly.kane@sap.com", 145000);
         Manager engineeringManager = new Manager("James Loe", "j.loe@sap.com", 155000);
 
         FullTimeEmployee employee1 = new FullTimeEmployee("John Doe", "john.doe@sap.com", 70000.0);
@@ -20,11 +20,13 @@ public class Main {
         PartTimeEmployee employee5 = new PartTimeEmployee("Sarah Kim", "sarah.kim@sap.com", 75000.0);
 
         Department financeDepartment = new Department("Finance Department", financeManager);
+        financeDepartment.addEmployee(financeManager);
         financeDepartment.addEmployee(employee1);
         financeDepartment.addEmployee(employee2);
         financeDepartment.addEmployee(employee3);
 
         Department engineeringDepartment = new Department("Engineering Department", engineeringManager);
+        engineeringDepartment.addEmployee(engineeringManager);
         engineeringDepartment.addEmployee(employee4);
         engineeringDepartment.addEmployee(employee5);
 
@@ -41,7 +43,7 @@ public class Main {
         System.out.println("Taxes of Engineering Department: " + company.getTaxesByDepartmentName("Engineering Department"));
         System.out.println();
 
-        System.out.println("Taxes of the company: " + company.getTaxes());
+        System.out.println("Taxes of the company: " + company.getCompanyTaxes());
 
     }
 }
