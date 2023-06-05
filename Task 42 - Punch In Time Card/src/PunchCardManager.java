@@ -8,6 +8,11 @@ import java.util.concurrent.TimeUnit;
 public class PunchCardManager {
     private static final String FILE_NAME = "clock_in_out.txt";
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
+    private final Properties properties;
+
+    public PunchCardManager() {
+        properties = loadProperties();
+    }
 
     public void clockIn() {
         Date date = new Date();
@@ -75,11 +80,14 @@ public class PunchCardManager {
 
     public void openPunchCardFile() {
         JPasswordField passwordField = new JPasswordField();
+        passwordField.setEchoChar('*');
         int input = JOptionPane.showConfirmDialog(null, passwordField, "Enter Password:", JOptionPane.OK_CANCEL_OPTION);
 
         if (input == JOptionPane.OK_OPTION) {
             String password = new String(passwordField.getPassword());
-            if (password.equals("123")) {
+            String storedPassword = properties.getProperty("password");
+
+            if (password.equals(storedPassword)) {
                 try {
                     Desktop.getDesktop().open(new File(FILE_NAME));
                 } catch (IOException ex) {
@@ -87,6 +95,62 @@ public class PunchCardManager {
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Incorrect password. Access denied.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    private Properties loadProperties() {
+        Properties properties = new Properties();
+
+        try (FileInputStream fileInputStream = new FileInputStream("config.properties")) {
+            properties.load(fileInputStream);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return properties;
+    }
+
+    private void saveProperties(Properties properties) {
+        try (FileOutputStream fileOutputStream = new FileOutputStream("config.properties")) {
+            properties.store(fileOutputStream, null);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void changePassword() {
+        JPasswordField previousPasswordField = new JPasswordField();
+        previousPasswordField.setEchoChar('*');
+
+        JPanel panel = new JPanel(new GridLayout(2, 1));
+        panel.add(new JLabel("Enter previous password:"));
+        panel.add(previousPasswordField);
+
+        if (JOptionPane.showOptionDialog(null, panel, "Change Password", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null) == JOptionPane.OK_OPTION) {
+            String previousPassword = new String(previousPasswordField.getPassword());
+            String storedPassword = properties.getProperty("password");
+
+            if (previousPassword.equals(storedPassword)) {
+                JPasswordField newPasswordField = new JPasswordField();
+                newPasswordField.setEchoChar('*');
+
+                panel.removeAll();
+                panel.add(new JLabel("Enter new password:"));
+                panel.add(newPasswordField);
+
+                if (JOptionPane.showOptionDialog(null, panel, "Change Password", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null) == JOptionPane.OK_OPTION) {
+                    String newPassword = new String(newPasswordField.getPassword());
+
+                    if (newPassword.equals(previousPassword)) {
+                        JOptionPane.showMessageDialog(null, "New password must be different from the previous password. Change password failed.", "Change Password", JOptionPane.ERROR_MESSAGE);
+                    } else {
+                        properties.setProperty("password", newPassword);
+                        saveProperties(properties);
+                        JOptionPane.showMessageDialog(null, "Password changed successfully!", "Change Password", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Incorrect previous password. Change password failed.", "Change Password", JOptionPane.ERROR_MESSAGE);
             }
         }
     }

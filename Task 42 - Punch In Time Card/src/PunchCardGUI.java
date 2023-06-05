@@ -16,6 +16,7 @@ public class PunchCardGUI {
         JButton clockOutButton = new JButton("Clock Out");
         JButton openFileButton = new JButton("Open Punch Card");
         JButton workTotalButton = new JButton("Work Total");
+        JButton changePasswordButton = new JButton("Change Password");
 
         clockInButton.addActionListener(e -> punchCardManager.clockIn());
 
@@ -25,11 +26,14 @@ public class PunchCardGUI {
 
         workTotalButton.addActionListener(e -> punchCardManager.showTotalWorkTime());
 
-        panel.setLayout(new GridLayout(2,2));
+        changePasswordButton.addActionListener(e -> punchCardManager.changePassword());
+
+        panel.setLayout(new GridLayout(3,2));
         panel.add(clockInButton);
         panel.add(clockOutButton);
         panel.add(openFileButton);
         panel.add(workTotalButton);
+        panel.add(changePasswordButton);
 
         frame.add(panel);
         frame.setTitle("Punch Card");
