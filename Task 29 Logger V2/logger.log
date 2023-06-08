@@ -1,0 +1,36 @@
+Tue May 09 19:50:08 EEST 2023 : WARNING : Logger : log : This is a warning message
+Tue May 09 19:50:08 EEST 2023 : SEVERE : Logger : log : This is a severe message : java.lang.Exception: Exception details
+Tue May 09 19:50:08 EEST 2023 : WARNING : Logger : log : An exception occurred : java.lang.RuntimeException: This is an example exception
+Tue May 09 19:51:12 EEST 2023 : WARNING : Logger : log : This is a warning message
+Tue May 09 19:51:12 EEST 2023 : SEVERE : Logger : log : This is a severe message : java.lang.Exception: Exception details
+Tue May 09 19:51:12 EEST 2023 : WARNING : Logger : log : An exception occurred : java.lang.RuntimeException: This is an example exception
+Tue May 09 19:51:35 EEST 2023 : WARNING : Logger : log : This is a warning message
+Tue May 09 19:51:35 EEST 2023 : SEVERE : Logger : log : This is a severe message : java.lang.Exception: Exception details
+Tue May 09 19:51:35 EEST 2023 : WARNING : Logger : log : An exception occurred : java.lang.RuntimeException: This is an example exception
+Tue May 09 19:52:38 EEST 2023 : WARNING : Logger : log : This is a warning message
+Tue May 09 19:52:38 EEST 2023 : SEVERE : Logger : log : This is a severe message : java.lang.Exception: Exception details
+Tue May 09 19:52:38 EEST 2023 : WARNING : Logger : log : An exception occurred : java.lang.RuntimeException: This is an example exception
+Tue May 09 19:56:12 EEST 2023 : WARNING : Logger : log : This is a warning message
+Tue May 09 19:56:12 EEST 2023 : SEVERE : Logger : log : This is a severe message : java.lang.Exception: Exception details
+Tue May 09 19:56:12 EEST 2023 : WARNING : Logger : log : An exception occurred : java.lang.RuntimeException: This is an example exception
+Tue May 09 19:58:27 EEST 2023 : WARNING : Logger : log : This is a warning message
+Tue May 09 19:58:27 EEST 2023 : SEVERE : Logger : log : This is a severe message : java.lang.Exception: Exception details
+Tue May 09 19:58:27 EEST 2023 : WARNING : Logger : log : An exception occurred : java.lang.RuntimeException: This is an example exception
+Tue May 09 20:08:36 EEST 2023 : WARNING : Logger : log : This is a warning message
+Tue May 09 20:08:36 EEST 2023 : SEVERE : Logger : log : This is a severe message : java.lang.Exception: Exception details
+Tue May 09 20:08:36 EEST 2023 : WARNING : Logger : log : An exception occurred : java.lang.RuntimeException: This is an example exception
+Tue May 09 20:09:03 EEST 2023 : WARNING : Logger : log : This is a warning message
+Tue May 09 20:09:03 EEST 2023 : SEVERE : Logger : log : This is a severe message : java.lang.Exception: Exception details
+Tue May 09 20:09:03 EEST 2023 : WARNING : Logger : log : An exception occurred : java.lang.RuntimeException: This is an example exception
+Tue May 09 20:09:13 EEST 2023 : WARNING : Logger : log : This is a warning message
+Tue May 09 20:09:13 EEST 2023 : SEVERE : Logger : log : This is a severe message : java.lang.Exception: Exception details
+Tue May 09 20:09:13 EEST 2023 : WARNING : Logger : log : An exception occurred : java.lang.RuntimeException: This is an example exception
+Tue May 09 20:10:02 EEST 2023 : WARNING : Logger : log : This is a warning message
+Tue May 09 20:10:02 EEST 2023 : SEVERE : Logger : log : This is a severe message : java.lang.Exception: Exception details
+Tue May 09 20:10:02 EEST 2023 : WARNING : Logger : log : An exception occurred : java.lang.RuntimeException: This is an example exception
+Thu Jun 08 13:34:01 EEST 2023 : WARNING : Logger : log : This is a warning message
+Thu Jun 08 13:34:01 EEST 2023 : SEVERE : Logger : log : This is a severe message : java.lang.Exception: Exception details
+Thu Jun 08 13:34:01 EEST 2023 : WARNING : Logger : log : An exception occurred : java.lang.RuntimeException: This is an example exception
+Thu Jun 08 13:36:11 EEST 2023 : WARNING : Logger : log : This is a warning message
+Thu Jun 08 13:36:11 EEST 2023 : SEVERE : Logger : log : This is a severe message : java.lang.Exception: Exception details
+Thu Jun 08 13:36:11 EEST 2023 : WARNING : Logger : log : An exception occurred : java.lang.RuntimeException: This is an example exception

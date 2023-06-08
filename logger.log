@@ -1,0 +1,3 @@
+Tue May 09 20:01:19 EEST 2023 : WARNING : Logger : log : This is a warning message
+Tue May 09 20:01:19 EEST 2023 : SEVERE : Logger : log : This is a severe message : java.lang.Exception: Exception details
+Tue May 09 20:01:19 EEST 2023 : WARNING : Logger : log : An exception occurred : java.lang.RuntimeException: This is an example exception
