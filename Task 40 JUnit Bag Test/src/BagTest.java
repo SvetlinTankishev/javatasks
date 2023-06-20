@@ -7,7 +7,7 @@ public class BagTest {
 
     @Before
     public void setUp() {
-        bag = new Bag<Integer>();
+        bag = new Bag<>();
         bag.add(1);
         bag.add(2);
         bag.add(3);
