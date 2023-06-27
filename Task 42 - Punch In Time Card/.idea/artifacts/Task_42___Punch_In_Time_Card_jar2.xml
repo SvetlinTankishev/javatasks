@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact name="Task 42 - Punch In Time Card:jar2">
+    <output-path>$PROJECT_DIR$/out/artifacts/Task_42___Punch_In_Time_Card_jar2</output-path>
+    <root id="root">
+      <element id="archive" name="Task 42 - Punch In Time Card.jar">
+        <element id="module-output" name="Task 42 - Punch In Time Card" />
+      </element>
+    </root>
+  </artifact>
+</component>

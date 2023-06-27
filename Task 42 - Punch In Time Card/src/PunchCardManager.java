@@ -1,13 +1,19 @@
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
-import java.text.*;
-import java.util.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class PunchCardManager {
     private static final String FILE_NAME = "clock_in_out.txt";
-    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
+    private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("HH:mm:ss dd-MM-yyyy");
     private final Properties properties;
 
     public PunchCardManager() {
@@ -15,47 +21,45 @@ public class PunchCardManager {
     }
 
     public void clockIn() {
-        Date date = new Date();
-        String dateTime = DATE_FORMAT.format(date);
+        LocalDateTime dateTime = LocalDateTime.now();
+        String formattedDateTime = dateTime.format(DATE_FORMAT);
 
         try {
-            FileWriter writer = new FileWriter(FILE_NAME, true);
-            writer.write("Clock In: " + dateTime + "\n");
-            writer.close();
-            showOptionDialog("You have clocked in at " + dateTime, "Clock In");
+            Files.writeString(Path.of(FILE_NAME), "Clock In: " + formattedDateTime + "\n", StandardOpenOption.APPEND);
+            showOptionDialog("You have clocked in at " + formattedDateTime, "Clock In");
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
 
     public void clockOut() {
-        Date date = new Date();
-        String dateTime = DATE_FORMAT.format(date);
+        LocalDateTime dateTime = LocalDateTime.now();
+        String formattedDateTime = dateTime.format(DATE_FORMAT);
 
-        String clockInTimestamp = readLastClockInTimestamp();
+        LocalDateTime clockInDateTime = readLastClockInTimestamp();
 
-        long diffInMinutes = calculateTimeDifference(clockInTimestamp, dateTime);
+        Duration duration = calculateTimeDifference(clockInDateTime, dateTime);
 
         try {
-            FileWriter writer = new FileWriter(FILE_NAME, true);
-            writer.write("Clock Out: " + dateTime + "\n");
-            writer.write("Time spent: " + diffInMinutes + " minutes\n\n");
-            writer.close();
-            showOptionDialog("You have clocked out at " + dateTime + " (" + diffInMinutes + " minutes)", "Clock Out");
+            Path of = Path.of(FILE_NAME);
+            Files.writeString(of, "Clock Out: " + formattedDateTime + "\n", StandardOpenOption.APPEND);
+            Files.writeString(of, "Time spent: " + duration.toMinutes() + " minutes\n\n", StandardOpenOption.APPEND);
+            showOptionDialog("You have clocked out at " + formattedDateTime + " (" + duration.toMinutes() + " minutes)", "Clock Out");
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
 
-    private String readLastClockInTimestamp() {
-        String clockInTimestamp = "";
+    private LocalDateTime readLastClockInTimestamp() {
+        LocalDateTime clockInTimestamp = null;
 
         try {
             BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME));
             String line;
             while ((line = reader.readLine()) != null) {
                 if (line.startsWith("Clock In:")) {
-                    clockInTimestamp = line.substring(10);
+                    String timestampString = line.substring(10);
+                    clockInTimestamp = LocalDateTime.parse(timestampString, DATE_FORMAT);
                 }
             }
             reader.close();
@@ -66,22 +70,18 @@ public class PunchCardManager {
         return clockInTimestamp;
     }
 
-    private long calculateTimeDifference(String startTime, String endTime) {
-        long diffInMillies = 0;
-        try {
-            Date clockInDate = DATE_FORMAT.parse(startTime);
-            Date clockOutDate = DATE_FORMAT.parse(endTime);
-            diffInMillies = Math.abs(clockOutDate.getTime() - clockInDate.getTime());
-        } catch (ParseException ex) {
-            ex.printStackTrace();
-        }
-        return TimeUnit.MILLISECONDS.toMinutes(diffInMillies);
+    private Duration calculateTimeDifference(LocalDateTime startTime, LocalDateTime endTime) {
+        return Duration.between(startTime, endTime);
     }
 
     public void openPunchCardFile() {
         JPasswordField passwordField = new JPasswordField();
         passwordField.setEchoChar('*');
-        int input = JOptionPane.showConfirmDialog(null, passwordField, "Enter Password:", JOptionPane.OK_CANCEL_OPTION);
+        int input = JOptionPane.showConfirmDialog(
+                null,
+                passwordField,
+                "Enter Password:",
+                JOptionPane.OK_CANCEL_OPTION);
 
         if (input == JOptionPane.OK_OPTION) {
             String password = new String(passwordField.getPassword());
@@ -94,7 +94,11 @@ public class PunchCardManager {
                     ex.printStackTrace();
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Incorrect password. Access denied.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Incorrect password. Access denied.",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
             }
         }
     }
@@ -103,7 +107,7 @@ public class PunchCardManager {
         Properties properties = new Properties();
 
         try (FileInputStream fileInputStream = new FileInputStream("config.properties")) {
-            properties.load(fileInputStream);
+            properties.load(new InputStreamReader(fileInputStream, StandardCharsets.UTF_8));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -112,13 +116,84 @@ public class PunchCardManager {
 
     private void saveProperties(Properties properties) {
         try (FileOutputStream fileOutputStream = new FileOutputStream("config.properties")) {
-            properties.store(fileOutputStream, null);
+            properties.store(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8), null);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
 
     public void changePassword() {
+        File configFile = new File("config.properties");
+
+        if (!configFile.exists()) {
+            createConfigPropertiesFile();
+        } else {
+            changeExistingPassword();
+        }
+    }
+
+    public void createConfigPropertiesFile() {
+        try {
+            File configFile = new File("config.properties");
+            boolean created = configFile.createNewFile();
+
+            if (created) {
+                JPasswordField passwordField = new JPasswordField();
+                passwordField.setEchoChar('*');
+
+                JPanel panel = new JPanel(new GridLayout(2, 1));
+                panel.add(new JLabel("Enter password:"));
+                panel.add(passwordField);
+
+                int option = JOptionPane.showOptionDialog(
+                        null,
+                        panel,
+                        "Set Password",
+                        JOptionPane.OK_CANCEL_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        null,
+                        null);
+
+                if (option == JOptionPane.OK_OPTION) {
+                    String newPassword = new String(passwordField.getPassword());
+
+                    properties.setProperty("password", newPassword.trim());
+                    saveProperties(properties);
+
+                    JOptionPane.showMessageDialog(
+                            null,
+                            "Password set successfully!",
+                            "Set Password",
+                            JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    if (configFile.delete()) {
+                        JOptionPane.showMessageDialog(
+                                null,
+                                "Configuration file creation canceled. The empty config file has been deleted.",
+                                "Canceled",
+                                JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(
+                                null,
+                                "Failed to delete the empty config file.",
+                                "Error",
+                                JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Failed to create the password file.",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void changeExistingPassword() {
         JPasswordField previousPasswordField = new JPasswordField();
         previousPasswordField.setEchoChar('*');
 
@@ -126,7 +201,16 @@ public class PunchCardManager {
         panel.add(new JLabel("Enter previous password:"));
         panel.add(previousPasswordField);
 
-        if (JOptionPane.showOptionDialog(null, panel, "Change Password", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null) == JOptionPane.OK_OPTION) {
+        if (JOptionPane.showOptionDialog(
+                null,
+                panel,
+                "Change Password",
+                JOptionPane.OK_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                null,
+                null) == JOptionPane.OK_OPTION) {
+
             String previousPassword = new String(previousPasswordField.getPassword());
             String storedPassword = properties.getProperty("password");
 
@@ -138,56 +222,81 @@ public class PunchCardManager {
                 panel.add(new JLabel("Enter new password:"));
                 panel.add(newPasswordField);
 
-                if (JOptionPane.showOptionDialog(null, panel, "Change Password", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null) == JOptionPane.OK_OPTION) {
+                if (JOptionPane.showOptionDialog(
+                        null,
+                        panel,
+                        "Change Password",
+                        JOptionPane.OK_CANCEL_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        null,
+                        null) == JOptionPane.OK_OPTION) {
+
                     String newPassword = new String(newPasswordField.getPassword());
 
                     if (newPassword.equals(previousPassword)) {
-                        JOptionPane.showMessageDialog(null, "New password must be different from the previous password. Change password failed.", "Change Password", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(
+                                null,
+                                "New password must be different from the previous password. Change password failed.",
+                                "Error",
+                                JOptionPane.ERROR_MESSAGE);
                     } else {
-                        properties.setProperty("password", newPassword);
+                        properties.setProperty("password", newPassword.trim());
                         saveProperties(properties);
-                        JOptionPane.showMessageDialog(null, "Password changed successfully!", "Change Password", JOptionPane.INFORMATION_MESSAGE);
+
+                        JOptionPane.showMessageDialog(
+                                null,
+                                "Password changed successfully!",
+                                "Change Password",
+                                JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Incorrect previous password. Change password failed.", "Change Password", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Incorrect password. Change password failed.",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
             }
         }
     }
 
     public void showTotalWorkTime() {
-        ArrayList<Long> timeSpentValues = new ArrayList<>();
-
         try {
             BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME));
             String line;
+            long totalWorkTime = 0;
+
             while ((line = reader.readLine()) != null) {
                 if (line.startsWith("Time spent:")) {
-                    String timeSpentString = line.substring(12, line.indexOf(" minutes"));
-                    timeSpentValues.add(Long.parseLong(timeSpentString));
+                    String timeSpent = line.substring(12, line.indexOf(" minutes"));
+                    totalWorkTime += Long.parseLong(timeSpent);
                 }
             }
             reader.close();
+
+            long hours = TimeUnit.MINUTES.toHours(totalWorkTime);
+            long minutes = totalWorkTime - TimeUnit.HOURS.toMinutes(hours);
+
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Total work time: " + hours + " hours, " + minutes + " minutes",
+                    "Total Work Time",
+                    JOptionPane.INFORMATION_MESSAGE);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-
-        long totalWorkTime = 0;
-        for (long timeSpent : timeSpentValues) {
-            totalWorkTime += timeSpent;
-        }
-
-        long hours = TimeUnit.MINUTES.toHours(totalWorkTime);
-        long minutes = TimeUnit.MINUTES.toMinutes(totalWorkTime) - TimeUnit.HOURS.toMinutes(hours);
-        long seconds = TimeUnit.MINUTES.toSeconds(totalWorkTime) - TimeUnit.HOURS.toSeconds(hours) - TimeUnit.MINUTES.toSeconds(minutes);
-
-        String totalWorkTimeString = String.format("%02d:%02d:%02d", hours, minutes, seconds);
-        showOptionDialog("Total work time: " + totalWorkTimeString, "Work Total");
     }
 
     private void showOptionDialog(String message, String title) {
-        JOptionPane.showOptionDialog(null, message, title, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{"OK"}, null);
+        JOptionPane.showOptionDialog(
+                null,
+                message,
+                title,
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.INFORMATION_MESSAGE,
+                null,
+                new Object[]{},
+                null);
     }
-
-
 }
