@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Task 42 - Punch In Time Card:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="38e0b99d-1833-431e-9dcf-3c7ee7364394" name="Changes" comment="-Added function for program to create the config.properties file if one does not exist.&#10;-Added dynamic functionality to the password operations so the program recognizes the changes.&#10;-Added separate methods for the initial password set up and for the consequent password changing.&#10;-Updated the date and time calculations using the java.time library for more precise and efficient calculations.&#10;-Updated the use of java.nio.file package for writing to the file, which provides more flexibility and better error handling compared to traditional FileWriter.&#10;-Also changed the layout of the buttons a little bit.&#10;-Executed it to a build of a JAR file.">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Task_42___Punch_In_Time_Card_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Task_42___Punch_In_Time_Card_jar2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task 42 - Punch In Time Card.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clock_in_out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/clock_in_out.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Task_42___Punch_In_Time_Card_jar/Task 42 - Punch In Time Card.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Task_42___Punch_In_Time_Card_jar/clock_in_out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Task_42___Punch_In_Time_Card_jar/config.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Task 42 - Punch In Time Card/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Task 42 - Punch In Time Card/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Task 42 - Punch In Time Card/PunchCardGUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Task 42 - Punch In Time Card/PunchCardManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PunchCardGUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PunchCardManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Task42PunchInTimeCardv2/src/main/java/my/punch/card/PunchCardManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Task42PunchInTimeCardv2/src/main/java/my/punch/card/PunchCardManager.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/plugin">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/../Task42PunchInTimeCardv2">
+      <ProjectState />
+    </projectState>
+    <projectState path="$APPLICATION_HOME_DIR$/plugins/gradle">
+      <ProjectState />
+    </projectState>
+    <projectState path="$APPLICATION_HOME_DIR$/plugins/gradle/lib">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/plugin">
+          <activation />
+        </task>
+        <task path="$APPLICATION_HOME_DIR$/plugins/gradle">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Task 42 - Punch In Time Card" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="cffae800-ba4f-4648-9313-339ada3c595d" />
+        <option name="url" value="https://github.com/3idjn7/javatasks.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2QHaqKNP1glYGanFHM31DXDsbwF" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/sepre/OneDrive/Desktop/Learning Java/JUnit5WithMockito.jar",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "project.propCompiler",
+    "show.migrate.to.gradle.popup": "false"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\sepre\OneDrive\Desktop\Java Tasks\Task 42 - Punch In Time Card\plugin\src\test\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\sepre\OneDrive\Desktop\Java Tasks\Task 42 - Punch In Time Card" />
+      <recent name="C:\Users\sepre\OneDrive\Desktop\Java Tasks\Task 42 - Punch In Time Card\plugin\src\main\resources" />
+      <recent name="C:\Users\sepre\OneDrive\Desktop\Java Tasks\Task 42 - Punch In Time Card\plugin\src\test\resources" />
+      <recent name="C:\Users\sepre\OneDrive\Desktop\Java Tasks\Task 42 - Punch In Time Card\plugin\src\test\java\task\punch\in\time\card" />
+      <recent name="C:\Users\sepre\OneDrive\Desktop\Java Tasks\Task 42 - Punch In Time Card\plugin\src\test" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradle testCompile &quot;org.mockito:mockito-all:1.9.5&quot;" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Gradle.gradle [testCompile &quot;org.mockito:mockito-all:1.9.5&quot;]">
+    <configuration name="task.punch.in.time.card.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="task.punch.in.time.card.Main" />
+      <module name="Task_42_-_Punch_In_Time_Card.plugin.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="task.punch.in.time.card.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PunchCardManagerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":plugin:test" />
+            <option value="--tests" />
+            <option value="&quot;task.punch.in.time.card.PunchCardManagerTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>true</ForceTestExec>
+      <method v="2" />
+    </configuration>
+    <configuration name="PunchCardManagerTest.testClockIn" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":plugin:test" />
+            <option value="--tests" />
+            <option value="&quot;task.punch.in.time.card.PunchCardManagerTest.testClockIn&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>true</ForceTestExec>
+      <method v="2" />
+    </configuration>
+    <configuration name="Task42PunchInTimeCardPluginFunctionalTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":plugin:functionalTest" />
+            <option value="--tests" />
+            <option value="&quot;task.punch.in.time.card.Task42PunchInTimeCardPluginFunctionalTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>true</ForceTestExec>
+      <method v="2" />
+    </configuration>
+    <configuration name="gradle [testCompile &quot;org.mockito:mockito-all:1.9.5&quot;]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$APPLICATION_HOME_DIR$/plugins/gradle" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="testCompile" />
+            <option value="&quot;org.mockito:mockito-all:1.9.5&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.gradle [testCompile &quot;org.mockito:mockito-all:1.9.5&quot;]" />
+        <item itemvalue="Gradle.PunchCardManagerTest" />
+        <item itemvalue="Gradle.Task42PunchInTimeCardPluginFunctionalTest" />
+        <item itemvalue="Gradle.PunchCardManagerTest.testClockIn" />
+        <item itemvalue="Application.task.punch.in.time.card.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="38e0b99d-1833-431e-9dcf-3c7ee7364394" name="Changes" comment="" />
+      <created>1685013153874</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1685013153874</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Punch Card program with GUI:&#10;-Clock In button&#10;-Clock Out button&#10;-Check card w/ password button&#10;-Total Work time check button">
+      <created>1685017967743</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1685017967743</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Punch Card program with GUI:&#10;-Clock In button&#10;-Clock Out button&#10;-Check card w/ password button&#10;-Total Work time check button">
+      <created>1685018086406</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1685018086406</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Punch Card program with GUI:&#10;-Clock In button&#10;-Clock Out button&#10;-Check card w/ password button&#10;-Total Work time check button">
+      <created>1685018393408</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1685018393408</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Punch Card program with GUI:&#10;-Clock In button&#10;-Clock Out button&#10;-Check card w/ password button&#10;-Total Work time check button">
+      <created>1685018484190</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1685018484190</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added change password functionality.">
+      <created>1685974656709</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1685974656709</updated>
+    </task>
+    <task id="LOCAL-00006" summary="-Added function for program to create the config.properties file if one does not exist.&#10;-Added dynamic functionality to the password operations so the program recognizes the changes.&#10;-Added separate methods for the initial password set up and for the consequent password changing.&#10;-Updated the date and time calculations using the java.time library for more precise and efficient calculations.&#10;-Updated the use of java.nio.file package for writing to the file, which provides more flexibility and better error handling compared to traditional FileWriter.&#10;-Also changed the layout of the buttons a little bit.&#10;-Executed it to a build of a JAR file.">
+      <created>1687872963685</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1687872963685</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Punch Card program with GUI:&#10;-Clock In button&#10;-Clock Out button&#10;-Check card w/ password button&#10;-Total Work time check button" />
+    <MESSAGE value="Added change password functionality." />
+    <MESSAGE value="-Added function for program to create the config.properties file if one does not exist.&#10;-Added dynamic functionality to the password operations so the program recognizes the changes.&#10;-Added separate methods for the initial password set up and for the consequent password changing.&#10;-Updated the date and time calculations using the java.time library for more precise and efficient calculations.&#10;-Updated the use of java.nio.file package for writing to the file, which provides more flexibility and better error handling compared to traditional FileWriter.&#10;-Also changed the layout of the buttons a little bit.&#10;-Executed it to a build of a JAR file." />
+    <option name="LAST_COMMIT_MESSAGE" value="-Added function for program to create the config.properties file if one does not exist.&#10;-Added dynamic functionality to the password operations so the program recognizes the changes.&#10;-Added separate methods for the initial password set up and for the consequent password changing.&#10;-Updated the date and time calculations using the java.time library for more precise and efficient calculations.&#10;-Updated the use of java.nio.file package for writing to the file, which provides more flexibility and better error handling compared to traditional FileWriter.&#10;-Also changed the layout of the buttons a little bit.&#10;-Executed it to a build of a JAR file." />
+  </component>
+</project>

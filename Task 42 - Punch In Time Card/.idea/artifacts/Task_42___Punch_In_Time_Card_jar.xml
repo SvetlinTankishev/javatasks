@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="Task 42 - Punch In Time Card:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/Task_42___Punch_In_Time_Card_jar</output-path>
-    <root id="archive" name="Task 42 - Punch In Time Card.jar">
-      <element id="module-output" name="Task 42 - Punch In Time Card" />
-    </root>
-  </artifact>
-</component>

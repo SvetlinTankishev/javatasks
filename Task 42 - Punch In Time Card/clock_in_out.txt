@@ -7,3 +7,10 @@ Clock Out: 16:25:18 27-06-2023
 Time spent: 0 minutes
 
 Clock In: 16:25:23 27-06-2023
+Clock In: 14:03:32 29-06-2023
+Clock Out: 14:03:50 29-06-2023
+Time spent: 0 minutes
+
+Clock Out: 14:47:01 29-06-2023
+Time spent: 43 minutes
+
