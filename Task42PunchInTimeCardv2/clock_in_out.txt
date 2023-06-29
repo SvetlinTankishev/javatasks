@@ -1,0 +1,19 @@
+Clock In: 13:27:56 29-06-2023
+Clock Out: 13:28:01 29-06-2023
+Time spent: 0 minutes
+
+Clock In: 15:25:29 29-06-2023
+Clock In: 15:25:39 29-06-2023
+Clock Out: 15:25:42 29-06-2023
+Time spent: 0 minutes
+
+Clock In: 15:26:30 29-06-2023
+Clock In: 15:26:33 29-06-2023
+Clock Out: 15:26:35 29-06-2023
+Time spent: 0 minutes
+
+Clock In: 15:43:23 29-06-2023
+Clock In: 15:43:28 29-06-2023
+Clock Out: 15:43:39 29-06-2023
+Time spent: 0 minutes
+
