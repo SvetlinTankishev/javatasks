@@ -6,4 +6,5 @@ public interface EmployeeDao {
     List<Employee> getAllEmployees();
     Employee getEmployeeById(int id);
     void deleteEmployee(int id);
+    int getMaxEmployeeId();
 }

@@ -1,15 +1,21 @@
 import java.util.List;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) {
-        EmployeeDao employeeDao = new EmployeeDaoImplementation();
+        employeeDao = new EmployeeDaoImplementation();
+        int maxId = employeeDao.getMaxEmployeeId();
+        int nextId = maxId + 1;
 
         // Test insert
-        Employee newEmployee = new Employee(1, "John", "Doe", "05.12.1964", "HR", 50000.0);
-        Employee newEmployee1 = new Employee(2, "Johnny", "Depp", "05.05.1964", "Peon", 5000.0);
-        Employee newEmployee2 = new Employee(3, "Johntra", "Volta", "05.06.1954", "WorkWork", 5000.0);
-        Employee newEmployee3 = new Employee(4, "Johnsey", "Thedoe", "05.07.1984", "OpaGolen", 3000.0);
-        Employee newEmployee4 = new Employee(5, "John", "Doe", "05.06.1967", "WorkWork", 10000.0);
+        Employee newEmployee = new Employee(nextId++, "John", "Doe", "05.12.1964", "HR", 5000.0);
+        Employee newEmployee1 = new Employee(nextId++, "Johnny", "Depp", "05.05.1964", "Peon", 6000.0);
+        Employee newEmployee2 = new Employee(nextId++, "Johntra", "Volta", "05.06.1954", "HR", 7000.0);
+        Employee newEmployee3 = new Employee(nextId++, "Johnsey", "Thedoe", "05.07.1984", "OpaGolen", 3000.0);
+        Employee newEmployee4 = new Employee(nextId++, "John", "Doe", "05.06.1967", "WorkWork", 10000.0);
         employeeDao.insertEmployee(newEmployee);
         employeeDao.insertEmployee(newEmployee1);
         employeeDao.insertEmployee(newEmployee2);
@@ -32,5 +38,31 @@ public class Main {
         // Test delete
         int employeeIdToDelete = 1;
         employeeDao.deleteEmployee(employeeIdToDelete);
+
+        updateSalariesForDepartment("HR", 1000.0);
+    }
+
+    private static EmployeeDaoImplementation employeeDao;
+    public static void updateSalariesForDepartment(String department, double raiseAmount) {
+        String url = employeeDao.getURL();
+        String username = employeeDao.getUSERNAME();
+        String password = employeeDao.getPASSWORD();
+
+        try (Connection connection = DriverManager.getConnection(url, username, password);
+             CallableStatement callableStatement = connection.prepareCall("{call employeees.UpdateSalariesForDepartment(?, ?)}")) {
+
+            // Set the input parameters
+            callableStatement.setString(1, department);
+            callableStatement.setDouble(2, raiseAmount);
+
+            // Execute the stored procedure
+            callableStatement.execute();
+            System.out.println("Salary update successful.");
+
+
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 }

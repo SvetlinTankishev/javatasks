@@ -7,6 +7,34 @@ class EmployeeDaoImplementation implements EmployeeDao {
     private static final String USERNAME = "root";
     private static final String PASSWORD = "databasepassword";
 
+    public String getURL() {
+        return URL;
+    }
+
+    public String getUSERNAME() {
+        return USERNAME;
+    }
+
+    public String getPASSWORD() {
+        return PASSWORD;
+    }
+
+    @Override
+    public int getMaxEmployeeId() {
+        int maxId = 0;
+        try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery("SELECT MAX(id) FROM employee")) {
+
+            if (resultSet.next()) {
+                maxId = resultSet.getInt(1);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return maxId;
+    }
+
     @Override
     public void insertEmployee(Employee e) {
         try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
