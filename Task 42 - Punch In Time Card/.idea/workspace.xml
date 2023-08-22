@@ -10,29 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="38e0b99d-1833-431e-9dcf-3c7ee7364394" name="Changes" comment="-Added function for program to create the config.properties file if one does not exist.&#10;-Added dynamic functionality to the password operations so the program recognizes the changes.&#10;-Added separate methods for the initial password set up and for the consequent password changing.&#10;-Updated the date and time calculations using the java.time library for more precise and efficient calculations.&#10;-Updated the use of java.nio.file package for writing to the file, which provides more flexibility and better error handling compared to traditional FileWriter.&#10;-Also changed the layout of the buttons a little bit.&#10;-Executed it to a build of a JAR file.">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Task_42___Punch_In_Time_Card_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Task_42___Punch_In_Time_Card_jar2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task 42 - Punch In Time Card.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clock_in_out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/clock_in_out.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/config.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Task_42___Punch_In_Time_Card_jar/Task 42 - Punch In Time Card.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Task_42___Punch_In_Time_Card_jar/clock_in_out.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Task_42___Punch_In_Time_Card_jar/config.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Task 42 - Punch In Time Card/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Task 42 - Punch In Time Card/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Task 42 - Punch In Time Card/PunchCardGUI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Task 42 - Punch In Time Card/PunchCardManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PunchCardGUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PunchCardManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Task42PunchInTimeCardv2/src/main/java/my/punch/card/PunchCardManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Task42PunchInTimeCardv2/src/main/java/my/punch/card/PunchCardManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
