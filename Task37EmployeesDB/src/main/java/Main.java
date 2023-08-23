@@ -1,12 +1,11 @@
-import java.sql.*;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        employeeDao = new EmployeeDaoImplementation();
+        EmployeeDaoImplementation employeeDao = new EmployeeDaoImplementation();
+        SalaryUpdater salaryUpdater = new SalaryUpdater(employeeDao);
         int maxId = employeeDao.getMaxEmployeeId();
         int nextId = maxId + 1;
-        double inflationRate = 2.9;
 
         // Test insert
         Employee newEmployee = new Employee(nextId++, "John", "Doe", "05.12.1964", "HR", 5000.0);
@@ -37,62 +36,7 @@ public class Main {
         int employeeIdToDelete = 1;
         employeeDao.deleteEmployee(employeeIdToDelete);
 
-        updateSalariesForDepartment("HR", 1000.0);
-        increaseSalariesWithInflation(inflationRate);
-    }
-
-    private static EmployeeDaoImplementation employeeDao;
-    public static void updateSalariesForDepartment(String department, double raiseAmount) {
-        String url = employeeDao.getURL();
-        String username = employeeDao.getUSERNAME();
-        String password = employeeDao.getPASSWORD();
-
-        try (Connection connection = DriverManager.getConnection(url, username, password);
-             CallableStatement callableStatement = connection.prepareCall("{call IncreaseSalariesForDepartment(?, ?, ?, ?)}")) {
-
-            // Set the input parameters
-            callableStatement.setString(1, department);
-            callableStatement.setDouble(2, raiseAmount);
-
-            // Set output parameters
-            callableStatement.registerOutParameter(3, Types.INTEGER);  // updatedCount
-            callableStatement.registerOutParameter(4, Types.VARCHAR);  // message
-
-            // Execute the stored procedure
-            callableStatement.execute();
-
-            // Get the output parameters
-            int updatedCount = callableStatement.getInt(3);
-            String message = callableStatement.getString(4);
-
-            System.out.println("Salary update successful. " + updatedCount + " employees updated. Message: " + message);
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    public static void increaseSalariesWithInflation(double inflationRate) {
-        String url = employeeDao.getURL();
-        String username = employeeDao.getUSERNAME();
-        String password = employeeDao.getPASSWORD();
-
-        try (Connection connection = DriverManager.getConnection(url, username, password);
-             CallableStatement callableStatement = connection.prepareCall("{call IncreaseSalariesWithInflation(?, ?, ?)}")) {
-
-            callableStatement.setDouble(1, inflationRate);
-
-            callableStatement.registerOutParameter(2, Types.INTEGER);
-            callableStatement.registerOutParameter(3, Types.VARCHAR);
-
-            callableStatement.execute();
-
-            int updatedCount = callableStatement.getInt(2);
-            String message = callableStatement.getString(3);
-
-            System.out.println("Salary update successful. " + message);
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
+        salaryUpdater.updateSalariesForDepartment("HR", 1000.0);
+        salaryUpdater.increaseSalariesWithInflation(2.9);
     }
 }
