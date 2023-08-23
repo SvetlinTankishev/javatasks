@@ -6,6 +6,7 @@ public class Main {
         employeeDao = new EmployeeDaoImplementation();
         int maxId = employeeDao.getMaxEmployeeId();
         int nextId = maxId + 1;
+        double inflationRate = 2.9;
 
         // Test insert
         Employee newEmployee = new Employee(nextId++, "John", "Doe", "05.12.1964", "HR", 5000.0);
@@ -37,6 +38,7 @@ public class Main {
         employeeDao.deleteEmployee(employeeIdToDelete);
 
         updateSalariesForDepartment("HR", 1000.0);
+        increaseSalariesWithInflation(inflationRate);
     }
 
     private static EmployeeDaoImplementation employeeDao;
@@ -65,6 +67,30 @@ public class Main {
 
             System.out.println("Salary update successful. " + updatedCount + " employees updated. Message: " + message);
 
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public static void increaseSalariesWithInflation(double inflationRate) {
+        String url = employeeDao.getURL();
+        String username = employeeDao.getUSERNAME();
+        String password = employeeDao.getPASSWORD();
+
+        try (Connection connection = DriverManager.getConnection(url, username, password);
+             CallableStatement callableStatement = connection.prepareCall("{call IncreaseSalariesWithInflation(?, ?, ?)}")) {
+
+            callableStatement.setDouble(1, inflationRate);
+
+            callableStatement.registerOutParameter(2, Types.INTEGER);
+            callableStatement.registerOutParameter(3, Types.VARCHAR);
+
+            callableStatement.execute();
+
+            int updatedCount = callableStatement.getInt(2);
+            String message = callableStatement.getString(3);
+
+            System.out.println("Salary update successful. " + message);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
