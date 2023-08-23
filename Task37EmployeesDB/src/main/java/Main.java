@@ -1,8 +1,5 @@
+import java.sql.*;
 import java.util.List;
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) {
@@ -49,17 +46,24 @@ public class Main {
         String password = employeeDao.getPASSWORD();
 
         try (Connection connection = DriverManager.getConnection(url, username, password);
-             CallableStatement callableStatement = connection.prepareCall("{call employeees.UpdateSalariesForDepartment(?, ?)}")) {
+             CallableStatement callableStatement = connection.prepareCall("{call IncreaseSalariesForDepartment(?, ?, ?, ?)}")) {
 
             // Set the input parameters
             callableStatement.setString(1, department);
             callableStatement.setDouble(2, raiseAmount);
 
+            // Set output parameters
+            callableStatement.registerOutParameter(3, Types.INTEGER);  // updatedCount
+            callableStatement.registerOutParameter(4, Types.VARCHAR);  // message
+
             // Execute the stored procedure
             callableStatement.execute();
-            System.out.println("Salary update successful.");
 
+            // Get the output parameters
+            int updatedCount = callableStatement.getInt(3);
+            String message = callableStatement.getString(4);
 
+            System.out.println("Salary update successful. " + updatedCount + " employees updated. Message: " + message);
 
         } catch (SQLException ex) {
             ex.printStackTrace();
