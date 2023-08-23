@@ -1,8 +1,8 @@
 public class Employee {
-    private String firstName;
-    private String lastName;
-    private String birthDate;
-    private String department;
+    private final String firstName;
+    private final String lastName;
+    private final String birthDate;
+    private final String department;
     private double salary;
 
     public Employee(int id, String firstName, String lastName, String birthDate, String department, double salary) {
@@ -14,46 +14,26 @@ public class Employee {
         this.salary = salary;
     }
 
-    private int id;
+    private final int id;
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
     public String getLastName() {
         return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
-    }
-
     public String getDepartment() {
         return department;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
     }
 
     public double getSalary() {

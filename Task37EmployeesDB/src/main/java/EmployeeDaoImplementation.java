@@ -3,9 +3,15 @@ import java.util.List;
 import java.util.ArrayList;
 
 class EmployeeDaoImplementation implements EmployeeDao {
-    private static final String URL = "jdbc:mysql://localhost:3306/employeesdb";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "databasepassword";
+    private static  String URL = "jdbc:mysql://localhost:3306/employeesdb";
+    private static  String USERNAME = "root";
+    private static  String PASSWORD = "databasepassword";
+
+    public void setDatabaseConnection(String url, String username, String password) {
+        this.URL = url;
+        this.USERNAME = username;
+        this.PASSWORD = password;
+    }
 
     public String getURL() {
         return URL;
