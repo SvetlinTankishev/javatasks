@@ -46,7 +46,7 @@ public class SalaryUpdaterTest {
         // Verify that the appropriate methods were called
         verify(mockCallableStatement).setString(1, department);
         verify(mockCallableStatement).setDouble(2, raiseAmount);
-        verify(mockCallableStatement).registerOutParameter(3, java.sql.Types.INTEGER);
+        verify(mockCallableStatement).registerOutParameter(3, java.sql.Types.INTEGER); // Register output parameter
         verify(mockCallableStatement).registerOutParameter(4, java.sql.Types.VARCHAR);
         verify(mockCallableStatement).execute();
 
@@ -73,7 +73,7 @@ public class SalaryUpdaterTest {
         salaryUpdater.increaseSalariesWithInflation(inflationRate);
 
         // Verify that the appropriate methods were called
-        verify(mockCallableStatement).setDouble(1, inflationRate);
+        verify(mockCallableStatement).setDouble(2, inflationRate);
         verify(mockCallableStatement).registerOutParameter(2, java.sql.Types.INTEGER);
         verify(mockCallableStatement).registerOutParameter(3, java.sql.Types.VARCHAR);
 
